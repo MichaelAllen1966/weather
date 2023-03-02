@@ -1,0 +1,6 @@
+name: weather
+channels:
+  - defaults
+dependencies:
+  - pip
+  - python=3.10
