@@ -29,9 +29,6 @@ def get_current_weather(time_now, loc, conn):
     # Print date and time
     print(time_now, end=',')
 
-    # Create datapoint connection
-    conn = datapoint.Manager(api_key="fa81416c-a56a-4360-b9cf-ff11fe68113f")
-
     # Get nearest site and print out its name
     
     no_data_retrieved = True
@@ -75,8 +72,13 @@ def get_current_weather(time_now, loc, conn):
 
 def main():
     time_now = strftime("%Y-%m-%d %H:%M:%S", gmtime())
+    
+    # Read in API key
+    with open('api_key.txt', 'r') as f:
+        key = f.readline()
+    
     # Establish connection
-    conn = datapoint.Manager(api_key="fa81416c-a56a-4360-b9cf-ff11fe68113f")
+    conn = datapoint.Manager(api_key = key)
       
     # Get weather for each city
     with open('./data/city_list.csv') as cities_csv:
